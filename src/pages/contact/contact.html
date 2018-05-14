@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Прогресс
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-item *ngFor="let rule of rules">
+    <ion-label>{{ rule }}</ion-label>
+    <ion-checkbox></ion-checkbox>
+  </ion-item>
+</ion-content>
+
