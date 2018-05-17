@@ -3,13 +3,35 @@
     <ion-title>
       Прогресс
     </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="toggleChange()" *ngIf="!ch">
+        изменить
+      </button>
+      <button ion-button (click)="toggleChange()" *ngIf="ch">
+        готово
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-item *ngFor="let rule of rules">
-    <ion-label>{{ rule }}</ion-label>
-    <ion-checkbox></ion-checkbox>
+    <ion-label>
+      {{ rule[0] }}
+      <ion-fab right top *ngIf="ch">
+        <button ion-fab mini color="danger" class="qwer" (click)="removeRule(rule)">
+          <ion-icon name="close"></ion-icon>
+        </button>
+      </ion-fab>
+    </ion-label>
+    <ion-checkbox [checked]="rule[1]" ([ngModel])="rule[1]" (click)="toggleRule(rule)"></ion-checkbox>
+
   </ion-item>
+
+  <ion-fab right bottom *ngIf="!ch">
+    <button ion-fab mini color="danger" (click)="add()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>
 
